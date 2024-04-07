@@ -10,6 +10,5 @@ import java.util.UUID;
 @Repository
 public interface UserProfileRepository extends JpaRepository<UserProfile, UUID> {
     Optional<UserProfile> findByEmail(String email);
-
-    void deleteByEmail(String email);
+    boolean existsByEmail(String email);
 }

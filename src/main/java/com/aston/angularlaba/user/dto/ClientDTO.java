@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClientRegistrationDTO {
+public class ClientDTO {
     @NotBlank(message = "First name is required")
     @Size(max = 30, message = "First name cannot be longer than 30 characters")
     private String firstName;

@@ -20,10 +20,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
     private static final String[] FREE_ACCESS = {
-            "/api/v1/new-user",
-            "/api/v1/registration",
-            "/api/v1/success"
+            "/api/v1/new-user"
     };
+
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserProfileDetailsService();
@@ -34,7 +33,7 @@ public class SecurityConfig {
         return httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers(FREE_ACCESS).permitAll()
-                        .requestMatchers("/api/v1/**").authenticated())
+                                .requestMatchers("/api/v1/**").authenticated())
                 .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
                 .build();
     }

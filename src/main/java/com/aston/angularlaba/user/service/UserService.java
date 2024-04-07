@@ -1,14 +1,13 @@
 package com.aston.angularlaba.user.service;
 
-import com.aston.angularlaba.user.dto.ClientRegistrationDTO;
-import com.aston.angularlaba.user.dto.ClientUpdateDTO;
+import com.aston.angularlaba.user.dto.ClientDTO;
 import com.aston.angularlaba.user.model.Client;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface UserService {
-    void createUser(ClientRegistrationDTO clientRegistrationDTO);
+    void createUser(ClientDTO clientRegistrationDTO);
     List<Client> getAll();
-    void updateUser(ClientUpdateDTO clientUpdateDTO);
-    void deleteUserByEmail(String email);
+    void deleteUserById(UUID userId);
 }
