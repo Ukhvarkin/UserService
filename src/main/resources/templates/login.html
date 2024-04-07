@@ -1,19 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:tn="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .success-message {
+            margin-top: 10px;
+            text-align: center;
+            color: #28a745;
+        }
+        .main-page-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-<form th:action="@{/login}" method="post">
-    <label>
-        <input name="email" type="text" placeholder="Email">
-    </label>
-    <label>
-        <input name="password" type="password" placeholder="Password">
-    </label>
-    <button type="submit">Login</button>
-</form>
-<a href="/">Main page</a>
+<div class="container">
+    <h1>Laba Angular</h1>
+    <div th:if="${param.success}" class="success-message">
+        Регистрация прошла успешно
+    </div>
+    <div th:if="${param.error}" class="success-message">
+        Неверные данные
+    </div>
+    <form th:action="@{/login}" method="post">
+        <label>
+            Email:
+            <input name="email" type="text" placeholder="Enter your email">
+        </label>
+        <label>
+            Password:
+            <input name="password" type="password" placeholder="Enter your password">
+        </label>
+        <button type="submit">Login</button>
+    </form>
+    <a href="/" class="main-page-link">Main page</a>
+</div>
 </body>
 </html>

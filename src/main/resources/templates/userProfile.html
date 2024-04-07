@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:tn="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .profile-info {
+            margin-top: 20px;
+        }
+
+        .profile-info label {
+            font-weight: bold;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/userProfile}" method="get">
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <label>Name:</label>
+            <p>John Doe</p>
+            <label>Email:</label>
+            <p>johndoe@example.com</p>
+            <label>Location:</label>
+            <p>New York, USA</p>
+            <!-- Другие сведения о пользователе -->
+        </div>
+        <div class="button-container">
+            <a href="/editProfile">Edit Profile</a>
+            <!-- Ссылка на страницу редактирования профиля -->
+        </div>
+    </div>
+</form>
+</body>
+</html>

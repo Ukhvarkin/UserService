@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/web")
-public class UserController {
+@RequestMapping()
+public class UserWebController {
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public UserWebController(UserService userService) {
         this.userService = userService;
     }
 
@@ -24,7 +24,12 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping
+    @GetMapping("/userProfile")
+    public String userProfile() {
+        return "userProfile";
+    }
+
+    @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
         model.addAttribute("clientRegistrationDTO", new ClientDTO());
         return "registration";
@@ -36,6 +41,6 @@ public class UserController {
             return "registration";
         }
         userService.createUser(clientRegistrationDTO);
-        return "redirect:/success";
+        return "redirect:login?success";
     }
 }

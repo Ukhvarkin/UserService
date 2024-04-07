@@ -106,11 +106,11 @@ public class UserServiceImpl implements UserService {
 
     private void userValidation(ClientDTO clientDTO) {
         if (userProfileRepository.existsByEmail(clientDTO.getEmail())) {
-            throw new IllegalArgumentException("Пользователь с таким email уже существует");
+            throw new IllegalArgumentException("Пользователь с таким email уже существует.");
         }
 
-        if (clientRepository.existsByMobilePhone(clientDTO.getEmail())) {
-            throw new IllegalArgumentException("Пользователь с таким номером телефона уже существует");
+        if (clientRepository.existsByMobilePhone(clientDTO.getMobilePhone())) {
+            throw new IllegalArgumentException("Пользователь с таким номером телефона уже существует.");
         }
     }
 }
