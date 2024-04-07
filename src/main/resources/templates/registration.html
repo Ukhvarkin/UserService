@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:tn="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заполнение данных</title>
+    <style>
+        form {
+            margin: 20px auto;
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .error {
+            color: red;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/registration}" th:object="${clientRegistrationDTO}" method="post">
+    <!-- Поле "Email" -->
+    <div>
+        <label for="email">Почта:</label>
+        <input type="text" id="email" name="email" th:field="*{email}" required>
+        <div th:if="${#fields.hasErrors('email')}" class="alert alert-danger">
+            <p th:errors="*{email}" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Поле "Имя" -->
+    <div>
+        <label for="firstName">Имя:</label>
+        <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required>
+        <div th:if="${#fields.hasErrors('firstName')}" class="alert alert-danger">
+            <p th:errors="*{firstName}" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Поле "Фамилия" -->
+    <div>
+        <label for="lastName">Фамилия:</label>
+        <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required>
+        <div th:if="${#fields.hasErrors('lastName')}" class="alert alert-danger">
+            <p th:errors="*{lastName}" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Поле "Мобильный телефон" -->
+    <div>
+        <label for="mobilePhone">Мобильный телефон:</label>
+        <input type="text" id="mobilePhone" name="mobilePhone" th:field="*{mobilePhone}" required>
+        <div th:if="${#fields.hasErrors('mobilePhone')}" class="alert alert-danger">
+            <p th:errors="*{mobilePhone}" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Поле "Номер паспорта" -->
+    <div>
+        <label for="passportNumber">Номер паспорта:</label>
+        <input type="text" id="passportNumber" name="passportNumber" th:field="*{passportNumber}" required>
+        <div th:if="${#fields.hasErrors('passportNumber')}" class="alert alert-danger">
+            <p th:errors="*{passportNumber}" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Поле "Пароль" -->
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" th:field="*{password}" required>
+        <div th:if="${#fields.hasErrors('password')}" class="alert alert-danger">
+            <p th:errors="*{password}" class="error"></p>
+        </div>
+    </div>
+
+    <!-- Кнопка отправки формы -->
+    <button type="submit">Отправить</button>
+</form>
+</body>
+</html>

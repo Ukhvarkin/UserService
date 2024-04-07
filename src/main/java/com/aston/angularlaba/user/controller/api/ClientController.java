@@ -1,4 +1,4 @@
-package com.aston.angularlaba.user.controller;
+package com.aston.angularlaba.user.controller.api;
 
 import com.aston.angularlaba.user.model.Client;
 import com.aston.angularlaba.user.service.UserService;
