@@ -9,6 +9,5 @@ import java.util.UUID;
 public interface UserService {
     void createUser(ClientDTO clientRegistrationDTO);
     List<Client> getAll();
-    void updateUser(UUID userId, ClientDTO clientDTO);
     void deleteUserById(UUID userId);
 }

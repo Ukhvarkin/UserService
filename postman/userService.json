@@ -1,0 +1,179 @@
+{
+	"info": {
+		"_postman_id": "507af151-2f41-4cc1-bd7d-b94dca4efc15",
+		"name": "LabaAngular",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28197593"
+	},
+	"item": [
+		{
+			"name": "UserService",
+			"item": [
+				{
+					"name": "add new client 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"user 1\",\r\n    \"lastName\": \"user 1\",\r\n    \"mobilePhone\": \"89364561235\",\r\n    \"passportNumber\": \"2697456123\",\r\n    \"email\": \"admin@mail.com\",\r\n    \"password\": \"12312312\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/new-user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"new-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new client 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"user 2\",\r\n    \"lastName\": \"user 2\",\r\n    \"mobilePhone\": \"89999999999\",\r\n    \"passportNumber\": \"1234123456\",\r\n    \"email\": \"user@mail.com\",\r\n    \"password\": \"12312312\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/new-user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"new-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login client",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'http://localhost:8080/login',\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/x-www-form-urlencoded'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'urlencoded',\r",
+									"        urlencoded: [\r",
+									"            { key: 'username', value: 'admin@mail.com' },\r",
+									"            { key: 'password', value: '12312312' }\r",
+									"        ]\r",
+									"    }\r",
+									"}, function (err, res) {\r",
+									"    if (err) {\r",
+									"        console.error('Error:', err);\r",
+									"    } else {\r",
+									"        console.log('Authenticated successfully');\r",
+									"        console.log('Received cookies:', res.cookies);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all users",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "admin@mail.com",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "12312312",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/client/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"client",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "API запросы:  \n\\- добавление клиента  \n\\- авторизация клиента  \n\\- получение списка всех пользователей"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		}
+	]
+}

@@ -26,15 +26,8 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Пользователь создан");
     }
 
-    @PutMapping("/user/{userId}")
-    public ResponseEntity<String> updateUser(@PathVariable UUID userId,
-                                             @Valid @RequestBody ClientDTO clientDTO){
-        log.info("Запрос на обновление пользователя с id: {}.", userId);
-        userService.updateUser(userId, clientDTO);
-        return ResponseEntity.ok("Данные пользователя обновлены");
-    }
     @DeleteMapping("/user/{userId}")
-    public ResponseEntity<String> deleteUser(@PathVariable UUID userId){
+    public ResponseEntity<String> deleteUser(@PathVariable UUID userId) {
         log.info("Запрос на удаление пользователя с id: {}.", userId);
         userService.deleteUserById(userId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Пользователь удален");
