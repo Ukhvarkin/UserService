@@ -12,4 +12,6 @@ import java.util.UUID;
 public interface ClientRepository extends JpaRepository<Client, UUID> {
     @NonNull
     List<Client> findAll();
+
+    boolean existsByMobilePhone(String mobilePhone);
 }
